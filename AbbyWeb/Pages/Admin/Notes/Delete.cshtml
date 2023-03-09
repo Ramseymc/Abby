@@ -1,0 +1,39 @@
+﻿@page
+@model AbbyWeb.Pages.Admin.Notes.DeleteModel
+@{
+}
+<input hidden asp-for="Note.Id" />
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary pl-3">Delete Note</h2>
+            <hr />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Note.Title"></label>
+            <input asp-for="Note.Title" class="form-control" />
+            <span asp-validation-for="Note.Title" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Note.Date"></label>
+            <input asp-for="Note.Date" class="form-control" />
+            <span asp-validation-for="Note.Date" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Note.Body"></label>
+            <input asp-for="Note.Body" class="form-control" />
+            <span asp-validation-for="Note.Body" class="text-danger"></span>
+        </div>
+        
+        <button type="submit" class="btn btn-danger" style="width:150px;">  <i class="bi bi-trash"></i> Delete</button>
+        <a asp-page="Index" class="btn btn-secondary" style="widgth;150px">Back To List</a>
+    </div>
+
+</form>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial"/> 
+    }
+}
