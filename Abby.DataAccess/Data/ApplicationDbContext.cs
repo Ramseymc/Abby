@@ -14,6 +14,6 @@ namespace Abby.DataAccess.Data
 
         public DbSet<FoodType> FoodType { get; set; }
 
-        public DbSet<Note> Note { get; set; }
+        public DbSet<Note> Note { get; set; } 
     }
 }
