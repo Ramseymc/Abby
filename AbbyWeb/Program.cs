@@ -14,6 +14,7 @@ builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 builder.Services.AddDbContext<ApplicationDbContext>(options=>options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")
     ));
+// add the Repository Interface
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 var app = builder.Build();
 

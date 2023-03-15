@@ -27,7 +27,9 @@ namespace Abby.DataAccess.Repository
         public void Update(Category category)
         {
             var ObjFromDb = _db.Category.FirstOrDefault(u => u.Id == category.Id);
-            _db.Update(category);
+            ObjFromDb.Name = category.Name;
+            ObjFromDb.DisplayOrder = category.DisplayOrder;
+         
         }
     }
 }
