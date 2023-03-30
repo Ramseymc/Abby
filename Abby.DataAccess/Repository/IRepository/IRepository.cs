@@ -19,7 +19,7 @@ namespace Abby.DataAccess.Repository.IRepository
         void RemoveRange(IEnumerable<T> entity);
 
         // GET ALL
-        IEnumerable<T> GetAll(string includeProperties = null);
+        IEnumerable<T> GetAll(string? includeProperties = null);
 
         // GetByID First or Default 
         T GetFirstOrDefault(Expression<Func<T,bool>>? filter = null);
