@@ -48,15 +48,18 @@ namespace AbbyWeb.Pages.Admin.MenuItems
             if(MenuItem.Id == 0)
             {
                 // create
-                string fileName_new = Guid.NewGuid().ToString();
-                var uploads = Path.Combine(webRootPath, @"images\menuitems");
-                var extension = Path.GetExtension(files[0].Name);
-
-                using (var fileStream = new FileStream(Path.Combine(uploads, fileName_new + extension), FileMode.Create))
+                if (files != null)
                 {
-                    files[0].CopyTo(fileStream);
+                    string fileName_new = Guid.NewGuid().ToString();
+                    var uploads = Path.Combine(webRootPath, @"images\menuitems");
+                    var extension = Path.GetExtension(files[0].FileName);
+
+                    using (var fileStream = new FileStream(Path.Combine(uploads, fileName_new + extension), FileMode.Create))
+                    {
+                        files[0].CopyTo(fileStream);
+                    }
+                    MenuItem.Image = @"\images\menuitems\" + fileName_new + extension;
                 }
-                MenuItem.Image = @"\images\menuitems\" + fileName_new + extension;
                 _unitOfWork.MenuItem.Add(MenuItem);
                 _unitOfWork.Save();
             }
