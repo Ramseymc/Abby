@@ -10,22 +10,24 @@ using System.Threading.Tasks;
 
 namespace Abby.DataAccess.Repository
 {
-    public class CategoryRepository :  Repository<Category>, ICategoryRepository
+    public class FoodTypeRepository :  Repository<FoodType>, IFoodTypeRepository
     {
 
         private readonly ApplicationDbContext _db;
-        public CategoryRepository(ApplicationDbContext db) : base(db)
+        public FoodTypeRepository(ApplicationDbContext db) : base(db)
         {
             _db = db;
         }
    
-
-        public void Update(Category category)
+        public void Save()
         {
-            var ObjFromDb = _db.Category.FirstOrDefault(u => u.Id == category.Id);
-            ObjFromDb.Name = category.Name;
-            ObjFromDb.DisplayOrder = category.DisplayOrder;
-         
+            _db.SaveChanges();
+        }
+
+        public void Update(FoodType obj)
+        {
+            var ObjFromDb = _db.FoodType.FirstOrDefault(u => u.Id == obj.Id);
+            ObjFromDb.Name = obj.Name;                     
         }
     }
 }
