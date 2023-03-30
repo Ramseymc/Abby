@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Abby.DataAccess.Repository.IRepository
 {
-    public interface IFoodTypeRepository : IRepository<FoodType>
+    public interface IMenuItemRepository : IRepository<MenuItem>
     {
-        void Update(FoodType obj);
+        void Update(MenuItem obj);
 
     }
 }

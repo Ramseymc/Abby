@@ -15,7 +15,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options=>options.UseSqlServe
         builder.Configuration.GetConnectionString("DefaultConnection")
     ));
 // add the Repository Interface
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -38,5 +38,6 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+app.MapControllers();
 
 app.Run();

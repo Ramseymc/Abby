@@ -9,22 +9,18 @@ namespace AbbyWeb.Pages.Admin.Categories
     public class IndexModel : PageModel
     {
 
-        private readonly ICategoryRepository _dbCategory;
+        private readonly IUnitOfWork _unitOfWork;
 
         public IEnumerable<Category> Categories { get; set; }
 
-        /// <summary>
-        /// Dependancy inject the ApplicationDbContext file so that the db is connected
-        /// </summary>
-        /// <param name="db"></param>
-        public IndexModel(ICategoryRepository dbCategory)
+        public IndexModel(IUnitOfWork unitOfWork)
         {
-            _dbCategory = dbCategory;
+            _unitOfWork = unitOfWork;
         }
 
         public void OnGet()
         {
-            Categories = _dbCategory.GetAll();
+            Categories = _unitOfWork.Category.GetAll();
         }
     }
 }
