@@ -16,11 +16,11 @@ $(document).ready(function () {
             {
                 "data": "id",
                 "render": function (data) {
-                    return `<div>
-                                <a href="/Admin/MenuItems/Upsert?id=${data}" class="btn btn-success text-white"
-                                style="cursor:pointer; width:100px;"> <i class="bi bi-pencil-square"></i> Edit </a>
-                                <a href="/Admin/MenuItems/Upsert?id=${data}" class="btn btn-danger text-white"
-                                style="cursor:pointer; width:100px;"> <i class="bi bi-trash-fill"></i> Delete </a>
+                    return `<div class="w-75 btn-group">
+                                <a href="/Admin/MenuItems/Upsert?id=${data}" class="btn btn-success text-white mx-2"> 
+                                <i class="bi bi-pencil-square"></i> Edit </a>
+                                <a href="/Admin/MenuItems/Upsert?id=${data}" class="btn btn-danger text-white mx-2"> 
+                                <i class="bi bi-trash-fill"></i> Delete </a>
 
                             </div`
                 },
