@@ -24,7 +24,7 @@ namespace AbbyWeb.Controllers
             return Json(new {data = menuItemList});
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             var objFromDb = _unitOfWork.MenuItem.GetFirstOrDefault(u => u.Id == id);
