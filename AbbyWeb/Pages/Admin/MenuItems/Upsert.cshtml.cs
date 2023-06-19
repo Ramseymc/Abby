@@ -25,6 +25,7 @@ namespace AbbyWeb.Pages.Admin.MenuItems
             _webHostEnvironment = webHostEnvironment;
             MenuItem = new();
         }
+
         public void OnGet()
         {
             CategoryList = _unitOfWork.Category.GetAll().Select(i => new SelectListItem()
@@ -42,9 +43,9 @@ namespace AbbyWeb.Pages.Admin.MenuItems
 
         public async Task<IActionResult> OnPost()
         {
-
             string webRootPath = _webHostEnvironment.WebRootPath;
             var files = HttpContext.Request.Form.Files;
+
             if(MenuItem.Id == 0)
             {
                 // create
@@ -69,6 +70,7 @@ namespace AbbyWeb.Pages.Admin.MenuItems
                 // edit
 
             }
+
             return RedirectToPage("./Index");
         }
     }

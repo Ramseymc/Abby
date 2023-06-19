@@ -19,13 +19,11 @@ namespace Abby.DataAccess.Repository
             _db = db;
         }
    
-
         public void Update(Category category)
         {
             var ObjFromDb = _db.Category.FirstOrDefault(u => u.Id == category.Id);
             ObjFromDb.Name = category.Name;
-            ObjFromDb.DisplayOrder = category.DisplayOrder;
-         
+            ObjFromDb.DisplayOrder = category.DisplayOrder;         
         }
     }
 }
