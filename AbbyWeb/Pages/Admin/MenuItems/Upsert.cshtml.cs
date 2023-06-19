@@ -78,7 +78,32 @@ namespace AbbyWeb.Pages.Admin.MenuItems
             else
             {
                 // edit
+                var objFromDb = _unitOfWork.MenuItem.GetFirstOrDefault(u => u.Id == MenuItem.Id);
+                if (files.Count > 0)
+                {
+                    string fileName_new = Guid.NewGuid().ToString();
+                    var uploads = Path.Combine(webRootPath, @"images\menuitems");
+                    var extension = Path.GetExtension(files[0].FileName);
 
+                    // del the old img
+                    var oldImagePath = Path.Combine(webRootPath, objFromDb.Image.TrimStart('\\'));
+                    if(System.IO.File.Exists(oldImagePath)) {
+                        System.IO.File.Delete(oldImagePath);
+                    }
+
+                    // new upload
+                    using (var fileStream = new FileStream(Path.Combine(uploads, fileName_new + extension), FileMode.Create))
+                    {
+                        files[0].CopyTo(fileStream);
+                    }
+                    MenuItem.Image = @"\images\menuitems\" + fileName_new + extension;
+                }
+                else
+                {
+                    MenuItem.Image = objFromDb.Image;
+                }
+                _unitOfWork.MenuItem.Update(MenuItem);
+                _unitOfWork.Save();
             }
 
             return RedirectToPage("./Index");
